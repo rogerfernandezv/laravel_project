@@ -29,7 +29,7 @@ class RealestateController extends Controller
     {
         $types = RealestateType::all();
         $business = RealestateBusiness::all();
-        
+
         return view('realestate.create', compact('types', 'business'));
     }
 
@@ -41,9 +41,17 @@ class RealestateController extends Controller
      */
     public function store(Request $request)
     {
-        $realestate = new Realestate($request->all());
 
-        return $realestate;
+        $request->validate([
+            'title' => 'required',
+            'cod_realestate' => 'required'
+        ]);
+
+        $realestate = new Realestate($request->all());
+        $realestate->save();
+        $realestates = Realestate::all();
+
+        return view('realestate.index', compact('realestates'));
     }
 
     /**
