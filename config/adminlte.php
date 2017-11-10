@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => 'Group Software',
 
     'title_prefix' => '',
 
@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Group Software</b>',
 
     'logo_mini' => '<b>A</b>LT',
 
@@ -115,13 +115,30 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
+            'text'        => 'Imovéis',
+            'url'         => 'realestate',
+            //'icon'        => 'file',
+            //'label'       => 4,
             'label_color' => 'success',
+            'icon_color' => 'aqua',
         ],
-        'ACCOUNT SETTINGS',
+        [
+            'text'        => 'Cadastrar imóvel',
+            'url'         => 'realestate/create',
+            //'icon'        => 'file',
+            //'label'       => 4,
+            'label_color' => 'success',
+            'icon_color' => 'aqua',
+        ],
+        [
+            'text'        => 'Importar XML',
+            'url'         => 'realestate/xml',
+            //'icon'        => 'file',
+            //'label'       => 4,
+            'label_color' => 'success',
+            'icon_color' => 'red',
+        ],
+        /*'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',
             'url'  => 'admin/settings',
@@ -182,7 +199,7 @@ return [
         [
             'text'       => 'Information',
             'icon_color' => 'aqua',
-        ],
+        ],*/
     ],
 
     /*

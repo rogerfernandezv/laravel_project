@@ -17,7 +17,7 @@ class CreateRealestatesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('realestate_business_id');
             $table->unsignedInteger('realestate_type_id');
-            $table->string('title');
+            $table->string('title')->nullable();
 
             $table->string('cod_realestate');
             $table->string('address')->nullable();
@@ -35,7 +35,7 @@ class CreateRealestatesTable extends Migration
             $table->integer('bathroom')->default(0);
             $table->integer('livingroom')->default(0);
             $table->integer('garage')->default(0);
-            $table->string('description')->default(0);
+            $table->string('description')->nullable();
 
             $table->timestamps();
 
