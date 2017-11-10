@@ -18,7 +18,7 @@ class RealestateController extends Controller
      */
     public function index()
     {
-        $realestates = Realestate::paginate(2);
+        $realestates = Realestate::paginate(10);
         return view('realestate.index', compact('realestates'));
     }
 
@@ -145,9 +145,7 @@ class RealestateController extends Controller
             $count = 0;
             foreach($xml_file->Imoveis->Imovel as $imovel)
             {
-                $count++;
-                if($count <= 10)
-                {
+
                     $realestate = new Realestate;
 
                     $tipo_imovel = $imovel->TipoImovel;
@@ -204,9 +202,8 @@ class RealestateController extends Controller
                     $realestate->save();
 
                     //poderia usar api para pegar rua mas estou sem tempo
-                }
-                else
-                    break;
+
+
 
             }
         }
