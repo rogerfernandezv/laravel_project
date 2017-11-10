@@ -17,7 +17,6 @@
 	        </ul>
 	    </div>
 	@endif
-
 	<div class="panel panel-default">
 		<div class="panel-heading">Cadastrar Imóvel</div>
 			<div class="panel-body">
@@ -105,7 +104,7 @@
 
 				    <div class="form-group col-md-12">
 				    	<label for="cep">CEP</label>
-				    	<input type="text" class="form-control" name="cep" id="cep" style="width: 15rem;">
+				    	<input type="text" class="form-control" name="cep" id="cep" style="width: 15rem;" onChange="validate_cep()">
 				    </div>
 
 				    <div class="form-row">
@@ -121,17 +120,17 @@
 					</div>
 
 					<div class="form-row">
-					    <div class="form-group col-md-4">
+					    <div class="form-group col-md-5">
 					    	<label for="district">Bairro</label>
 					    	<input type="text" class="form-control" name="district" id="district">
 					    </div>
 
-					    <div class="form-group col-md-4">
+					    <div class="form-group col-md-5">
 					    	<label for="city">Cidade</label>
 					    	<input type="text" class="form-control" name="city" id="city">
 					    </div>
 
-					    <div class="form-group col-md-4">
+					    <div class="form-group col-md-2">
 					    	<label for="state">Estado</label>
 					    	<input type="text" class="form-control" name="state" id="state">
 					    </div>
@@ -151,6 +150,40 @@
 			    </form>
 			</div>
 		</div>
+<script>
 
+function search_cep(cep){
+	
+	$.ajax({
+		url: ('https://webmaniabr.com/api/1/cep/' + cep +'/?app_key=5G9sxywT5N4wwf07WOO0iOX0BuRKkQtn&app_secret=6J8wKADPYl62kzDi42HFXbfmX8l3jSFrVyQ0dCCCtZS9UZMF'),
+		type: 'GET',
+		data: null,
+		processData: false,
+		contentType: false,
+		success: function (data) {
+			$('#address').val(data.endereco);
+			$('#district').val(data.bairro);
+			$('#city').val(data.cidade);
+			$('#state').val(data.uf);
+			console.log(data);
+		}
+	});
+}
+
+function validate_cep(){
+	var cep = $('#cep').val();
+	var validacep = /^[0-9]{8}$/;
+
+	cep = cep.replace(/\D/g, '');
+
+	console.log(cep);
+	/*if(validacep.test(cep))
+	{
+		search_cep(cep);
+	}*/
+
+}
+
+</script>
 
 @stop
